@@ -44,9 +44,9 @@ const Things = () => {
       title: 'OpenReply',
       description: (
         <>
-          OpenReply is the internet's comment section.<br />
+          OpenReply is the internet&apos;s comment section.<br />
           <br />
-          It's a browser extension and website that lets people vote and comment on any website on the internet.
+          It&apos;s a browser extension and website that lets people vote and comment on any website on the internet.
         </>
       ),
       image: '/things/openreply/dirag-biswas.png',
@@ -119,7 +119,7 @@ const Things = () => {
       title: 'Cerise',
       description: (
         <>
-          Cerise is a webapp to help you study. It's the first React webapp that I'd ever built.
+          Cerise is a webapp to help you study. It&apos;s the first React webapp that I&apos;d ever built.
         </>
       ),
       image: '/things/cerise/screenshot.png',
@@ -149,8 +149,8 @@ const Things = () => {
               things
             </div>
             <div className='relative w-full h-[20px]'>
-              <div className='absolute z-0 text-sm font-semibold ml-1 select-none'>here's a non-exhaustive list of all the things that i've built so far.</div>
-              <div className='absolute z-1 text-sm font-semibold ml-1 selection:text-slate-700 selection:bg-rose-300 text-transparent'>here's a non-exhaustive list of all the <span className='cursor-pointer'>_shit_</span> that i've built so far.</div>
+              <div className='absolute z-0 text-sm font-semibold ml-1 select-none'>here&apos;s a non-exhaustive list of all the things that i&apos;ve built so far.</div>
+              <div className='absolute z-1 text-sm font-semibold ml-1 selection:text-slate-700 selection:bg-rose-300 text-transparent'>here&apos;s a non-exhaustive list of all the <span className='cursor-pointer'>_shit_</span> that i&apos;ve built so far.</div>
             </div>
             <div className='flex flex-col gap-6 mt-6'>
               {

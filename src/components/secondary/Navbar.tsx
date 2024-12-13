@@ -48,7 +48,7 @@ const Navbar = () => {
         pathname && pathname.includes(navigationButton.path)
       ) setHighlightedNavigationButtonIndex(index)
     })
-  }, [pathname])
+  }, [navigationButtons, pathname])
 
   // Return:
   return (

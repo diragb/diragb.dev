@@ -23,6 +23,7 @@ const BlogArticle = () => {
   // State:
   const [isFetchingBlog, setIsFetchingBlog] = useState(false)
   const [content, setContent] = useState<string | null>(null)
+  const [hasFetchedContent, setHasFetchedContent] = useState(false)
 
   // Functions:
   const fetchBlog = async (blogID: string) => {
@@ -40,13 +41,24 @@ const BlogArticle = () => {
       })
     } finally {
       setIsFetchingBlog(false)
+      setHasFetchedContent(true)
     }
   }
 
   // Effects:
   useEffect(() => {
-    if (blogID && typeof blogID === 'string') fetchBlog(blogID)
-  }, [blogID])
+    if (
+      !isFetchingBlog &&
+      !hasFetchedContent &&
+      blogID &&
+      typeof blogID === 'string'
+    ) fetchBlog(blogID)
+  }, [
+    isFetchingBlog,
+    hasFetchedContent,
+    blogID,
+    fetchBlog,
+  ])
   
   // Return:
   return (

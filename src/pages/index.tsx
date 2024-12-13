@@ -6,7 +6,6 @@ import { cn } from '@/lib/utils'
 import { ubunto_mono } from '@/styles/fonts'
 
 // Components:
-import { ScrollArea } from '@/components/ui/scroll-area'
 import Link from 'next/link'
 import CustomHead from '@/components/primary/CustomHead'
 
@@ -36,7 +35,7 @@ const Home = () => {
               cse undergrad @ ipu
             </Link>{', '}
             <Link
-              href='/experience'
+              href='/work'
               className='cursor-pointer hover:underline hover:text-rose-700 transition-all'
             >
               senior frontend engineer at binaryveda

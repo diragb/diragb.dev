@@ -9,6 +9,7 @@ import { ubunto_mono } from '@/styles/fonts'
 
 // Components:
 import CustomHead from '@/components/primary/CustomHead'
+import Link from 'next/link'
 
 // Functions:
 const Education = () => {
@@ -30,18 +31,18 @@ const Education = () => {
             education
           </div>
           <div className='text-sm font-medium'>
-            i'm in my final year of cse undergrad at ipu, based in new delhi, india.<br/>
+            i&apos;m in my final year of cse undergrad at ipu, based in new delhi, india.<br/>
             <br />
             prior to this i did my schooling at don bosco school, and my +2 at delhi public school.<br />
             <br />
             i picked up a liking towards science and cs during my time at don bosco school, where we were taught the basics of DSA with C++ as a part of the cirriculum
             from the 7th standard.<br />
             <br />
-            in the 9th standard, i picked up php and built a website for a <a href='https://instagram.com/worded.xyz' target='_blank' className='font-semibold cursor-pointer hover:underline hover:text-rose-700 transition-all'>writing club</a> that i had started back then.<br />
+            in the 9th standard, i picked up php and built a website for a <Link href='https://instagram.com/worded.xyz' target='_blank' className='font-semibold cursor-pointer hover:underline hover:text-rose-700 transition-all'>writing club</Link> that i had started back then.<br />
             <br />
-            i built my first react webapp in 2019 called <a href='/things#cerise' className='font-semibold cursor-pointer hover:underline hover:text-rose-700 transition-all'>cerise</a> to help students with studying, which went semi-viral on reddit and instagram. it taught me my first lessons about product-market fit and marketing.<br />
+            i built my first react webapp in 2019 called <Link href='/things#cerise' className='font-semibold cursor-pointer hover:underline hover:text-rose-700 transition-all'>cerise</Link> to help students with studying, which went semi-viral on reddit and instagram. it taught me my first lessons about product-market fit and marketing.<br />
             <br />
-            i started working as a software engineer a week before a joined college, and i'm currently a senior frontend engineer at binaryveda.
+            i started working as a software engineer a week before a joined college, and i&apos;m currently a senior frontend engineer at binaryveda.
           </div>
         </div>
       </div>
