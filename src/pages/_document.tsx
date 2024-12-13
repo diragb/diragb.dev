@@ -1,13 +1,34 @@
-import { Html, Head, Main, NextScript } from "next/document";
+// Packages:
+import React from 'react'
 
-export default function Document() {
-  return (
-    <Html lang="en">
-      <Head />
-      <body className="antialiased">
+// Context:
+import { ThemeProvider } from '@/components/theme-provider'
+
+// Components:
+import {
+  Html,
+  Head,
+  Main,
+  NextScript,
+} from 'next/document'
+
+// Functions:
+const Document = () => (
+  <Html lang='en'>
+    <Head />
+    <body>
+      <ThemeProvider
+        attribute='class'
+        defaultTheme='system'
+        enableSystem
+        disableTransitionOnChange
+      >
         <Main />
         <NextScript />
-      </body>
-    </Html>
-  );
-}
+      </ThemeProvider>
+    </body>
+  </Html>
+)
+
+// Exports:
+export default Document
