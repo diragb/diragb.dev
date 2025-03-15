@@ -39,29 +39,29 @@ import { ScrollArea } from '@/components/ui/scroll-area'
 const Things = () => {
   // Constants:
   const things: Thing[] = [
-    {
-      id: 'openreply',
-      title: 'OpenReply',
-      description: (
-        <>
-          OpenReply is the internet&apos;s comment section.<br />
-          <br />
-          It&apos;s a browser extension and website that lets people vote and comment on any website on the internet.
-        </>
-      ),
-      image: '/things/openreply/dirag-biswas.png',
-      links: [
-        {
-          title: 'webapp',
-          url: 'https://openreply.app',
-        },
-        {
-          title: 'github',
-          url: 'https://github.com/open-reply/open-reply-extension',
-        },
-      ],
-      isWIP: true,
-    },
+    // {
+    //   id: 'openreply',
+    //   title: 'OpenReply',
+    //   description: (
+    //     <>
+    //       OpenReply is the internet&apos;s comment section.<br />
+    //       <br />
+    //       It&apos;s a browser extension and website that lets people vote and comment on any website on the internet.
+    //     </>
+    //   ),
+    //   image: '/things/openreply/dirag-biswas.png',
+    //   links: [
+    //     {
+    //       title: 'webapp',
+    //       url: 'https://openreply.app',
+    //     },
+    //     {
+    //       title: 'github',
+    //       url: 'https://github.com/open-reply/open-reply-extension',
+    //     },
+    //   ],
+    //   isWIP: true,
+    // },
     {
       id: 'yomato',
       title: 'Yomato',

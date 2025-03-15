@@ -39,14 +39,15 @@ const Home = () => {
               className='cursor-pointer hover:underline hover:text-rose-700 transition-all'
             >
               senior frontend engineer at binaryveda
-            </Link>{', '}
+            </Link>
+            {/* {', '}
             currently building{' '}
             <Link
               href='/things?thing=openreply'
               className='font-semibold cursor-pointer hover:underline hover:text-rose-700 transition-all'
             >
               openreply
-            </Link> on the side.
+            </Link> on the side. */}
           </div>
         </div>
       </div>
