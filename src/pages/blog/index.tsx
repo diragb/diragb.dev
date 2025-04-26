@@ -27,6 +27,12 @@ const Work = () => {
   const router = useRouter()
   const blogs: Blog[] = [
     {
+      id: 'harmony',
+      title: 'Harmony',
+      postedOn: '31st March, 2025',
+      preview: 'i think the harmony between the intellect/mind and the intuition/body is what leads to higher efficiency states of being. further, it does not matter how intelligent or intuitive an individual is, as long as the ratio is balanced, the individual will flourish and be happy.'
+    },
+    {
       id: 'gambits',
       title: 'Gambits',
       postedOn: '14th December, 2024',

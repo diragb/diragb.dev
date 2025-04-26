@@ -16,11 +16,11 @@ const Gambits = () => (
   <>
     <CustomHead title={`Gambits - Dirag Biswas`} />
     <ScrollArea className='w-screen h-screen'>
-      <div className={cn('flex items-center flex-col w-screen min-h-screen pt-[20vh] pb-28 uppercase', ubunto_mono.className)}>
+      <div className={cn('flex items-center flex-col w-screen min-h-screen pt-[20vh] pb-28', ubunto_mono.className)}>
         <div className='w-11/12 sm:w-[596px]'>
           <div className='flex flex-col gap-2 w-full'>
             <div
-              className='text-5xl text-rose-600'
+              className='text-5xl text-rose-600 uppercase'
               style={{
                 letterSpacing: '-1px',
                 fontFamily: 'VCR-OSD-Mono',

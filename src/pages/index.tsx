@@ -29,16 +29,16 @@ const Home = () => {
           </div>
           <div className='text-md font-medium'>
             <Link
-              href='/education'
-              className='cursor-pointer hover:underline hover:text-rose-700 transition-all'
-            >
-              cse undergrad @ ipu
-            </Link>{', '}
-            <Link
               href='/work'
               className='cursor-pointer hover:underline hover:text-rose-700 transition-all'
             >
               senior frontend engineer at binaryveda
+            </Link>{', '}
+            <Link
+              href='/education'
+              className='cursor-pointer hover:underline hover:text-rose-700 transition-all'
+            >
+              cse undergrad @ ipu
             </Link>
             {/* {', '}
             currently building{' '}
