@@ -23,17 +23,17 @@ const CustomHead = ({
     <meta name='theme-color' content='#E11D48' />
     <link rel='preconnect' href='https://fonts.googleapis.com' />
     <link rel='preconnect' href='https://fonts.gstatic.com' crossOrigin='anonymous' />
-    <meta name='description' content={ description ?? 'Hi, I\'m Dirag. I solve problems.' } />
+    <meta name='description' content={ description ?? 'hi, i\'m dirag. senior frontend engineer at binaryveda, cse undergrad @ ipu. learn more about me.' } />
     <meta name='image' content={ image?.square ?? 'https://diragb.dev/square-cover.png' } />
     <meta property='og:url' content='https://diragb.dev' />
     <meta property='og:type' content='article' />
     <meta property='og:title' content={ title ?? 'Dirag Biswas' } />
-    <meta property='og:description' content={ description ?? 'Hi, I\'m Dirag. I solve problems.' } />
+    <meta property='og:description' content={ description ?? 'hi, i\'m dirag. senior frontend engineer at binaryveda, cse undergrad @ ipu. learn more about me.' } />
     <meta property='og:image' content={ image?.square ?? 'https://diragb.dev/square-cover.png' } />
     <meta name='twitter:card' content='summary_large_image' />
     <meta name='twitter:creator' content='diragb' />
     <meta name='twitter:title' content={ title ?? 'Dirag Biswas' } />
-    <meta name='twitter:description' content={ description ?? 'Hi, I\'m Dirag. I solve problems.' } />
+    <meta name='twitter:description' content={ description ?? 'hi, i\'m dirag. senior frontend engineer at binaryveda, cse undergrad @ ipu. learn more about me.' } />
     <meta name='twitter:image' content={ image?.rectangle ?? 'https://diragb.dev/rect-cover.png' } />
     <meta name='twitter:image:alt' content={ title ?? 'Dirag Biswas' } />
     <link rel='preconnect' href='https://fonts.googleapis.com' />
