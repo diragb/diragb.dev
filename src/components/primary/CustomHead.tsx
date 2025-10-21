@@ -4,6 +4,7 @@ import React from 'react'
 // Constants:
 const siteURL = 'https://diragb.dev'
 const DEFAULTS = {
+  title: 'Dirag Biswas - Software Engineer',
   description: 'I\'m a software engineer, specializing in web technologies. Previously Senior Engineer at Binaryveda.',
 }
 
@@ -29,7 +30,7 @@ const CustomHead = ({
 }) => (
   <Head>
     {/* Primary Meta Tags */}
-    <title>{ title ?? 'Dirag Biswas' }</title>
+    <title>{ title ?? DEFAULTS.title }</title>
     <link rel='preconnect' href='https://fonts.googleapis.com' />
     <link rel='preconnect' href='https://fonts.gstatic.com' crossOrigin='anonymous' />
     <meta charSet='utf-8' />
@@ -37,9 +38,9 @@ const CustomHead = ({
     <meta name='theme-color' content='#0D9488' />
     <link rel='preconnect' href='https://fonts.googleapis.com' />
     <link rel='preconnect' href='https://fonts.gstatic.com' crossOrigin='anonymous' />
-    <meta name='title' content='Dirag Biswas' />
+    <meta name='title' content={title ?? DEFAULTS.title} />
     <meta name='description' content={ description ?? DEFAULTS.description } />
-    <meta name='application-name' content='Dirag Biswas' />
+    <meta name='application-name' content={title ?? DEFAULTS.title} />
     <meta name='image' content={ image?.og.square ?? `${siteURL}/og-square.jpg` } />
 
     {/* Canonical */}
@@ -52,24 +53,24 @@ const CustomHead = ({
     <meta property='og:type' content='website' />
     <meta property='og:url' content={siteURL} />
     <meta property='og:type' content='article' />
-    <meta property='og:site_name' content={ title ?? 'Dirag Biswas' } />
-    <meta property='og:title' content={ title ?? 'Dirag Biswas' } />
+    <meta property='og:site_name' content={ title ?? DEFAULTS.title } />
+    <meta property='og:title' content={ title ?? DEFAULTS.title } />
     <meta property='og:description' content={ description ?? DEFAULTS.description } />
     <meta property='og:image' content={ image?.og.image ?? `${siteURL}/og-image.jpg` } />
     <meta property='og:image:width' content='1200' />
     <meta property='og:image:height' content='630' />
-    <meta property='og:image:alt' content={image?.alt ?? 'Dirag Biswas'} />
+    <meta property='og:image:alt' content={image?.alt ?? DEFAULTS.title} />
     <meta property='og:image' content={image?.og.square ?? `${siteURL}/og-square.jpg`} />
     <meta property='og:image:width' content='1200' />
     <meta property='og:image:height' content='1200' />
 
     {/* Twitter */}
-    <meta name='twitter:title' content={ title ?? 'Dirag Biswas' } />
+    <meta name='twitter:title' content={ title ?? DEFAULTS.title } />
     <meta name='twitter:description' content={ description ?? DEFAULTS.description } />
     <meta name='twitter:card' content='summary_large_image' />
     <meta name='twitter:creator' content='diragb' />
     <meta name='twitter:image' content={ image?.twitterImage ?? `${siteURL}/twitter-image.jpg` } />
-    <meta name='twitter:image:alt' content={ title ?? 'Dirag Biswas' } />
+    <meta name='twitter:image:alt' content={ title ?? DEFAULTS.title } />
 
     {/* JSON-LD Structured Data */}
     <script
@@ -79,7 +80,7 @@ const CustomHead = ({
           {
             '@context': 'https://schema.org',
             '@type': 'Person',
-            name: 'Dirag Biswas',
+            name: title ?? DEFAULTS.title,
             alternateName: 'diragb',
             url: siteURL,
             jobTitle: 'Senior Frontend Engineer',
@@ -117,13 +118,13 @@ const CustomHead = ({
           {
             '@context': 'https://schema.org',
             '@type': 'WebSite',
-            name: 'Dirag Biswas',
+            name: title ?? DEFAULTS.title,
             url: siteURL,
             description: description ?? DEFAULTS.description,
             author: {
               '@type': 'Person',
-              name: 'Dirag Biswas',
-              url: 'https://github.com/diragb'
+              name: title ?? DEFAULTS.title,
+              url: 'https://diragb.dev'
             },
             inLanguage: 'en-US',
             isAccessibleForFree: true,

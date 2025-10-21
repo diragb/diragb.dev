@@ -32,7 +32,7 @@ const ExperienceCard = ({
   return (
     <div className='flex items-start gap-2 sm:gap-3 w-full'>
       <Avatar className='size-[52px] border-[1px] border-zinc-200'>
-        <AvatarImage src={company.logo} />
+        <AvatarImage src={company.logo} alt={company.name} />
         <AvatarFallback>{company.initials}</AvatarFallback>
       </Avatar>
       <div className='flex flex-col gap-1 sm:gap-2 w-full'>
