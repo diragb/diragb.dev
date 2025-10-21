@@ -4,7 +4,7 @@ import React from 'react'
 // Constants:
 const siteURL = 'https://diragb.dev'
 const DEFAULTS = {
-  description: 'hi, i\'m dirag. senior frontend engineer, cse undergrad @ ipu \'25. learn more about me.',
+  description: 'I\'m a software engineer, specializing in web technologies. Previously Senior Engineer at Binaryveda.',
 }
 
 // Components:
@@ -29,47 +29,47 @@ const CustomHead = ({
 }) => (
   <Head>
     {/* Primary Meta Tags */}
-    {/* <title>{ title ?? 'Dirag Biswas' }</title> */}
-    {/* <link rel='preconnect' href='https://fonts.googleapis.com' />
-    <link rel='preconnect' href='https://fonts.gstatic.com' crossOrigin='anonymous' /> */}
-    {/* <meta charSet='utf-8' /> */}
-    {/* <meta name='viewport' content='width=device-width, initial-scale=1' /> */}
-    {/* <meta name='theme-color' content='#E11D48' /> */}
-    {/* <link rel='preconnect' href='https://fonts.googleapis.com' />
-    <link rel='preconnect' href='https://fonts.gstatic.com' crossOrigin='anonymous' /> */}
-    {/* <meta name='title' content='Dirag Biswas' /> */}
-    {/* <meta name='description' content={ description ?? DEFAULTS.description } /> */}
-    {/* <meta name='application-name' content='Dirag Biswas' /> */}
-    {/* <meta name='image' content={ image?.square ?? `${siteURL}/og-square.jpg` } /> */}
+    <title>{ title ?? 'Dirag Biswas' }</title>
+    <link rel='preconnect' href='https://fonts.googleapis.com' />
+    <link rel='preconnect' href='https://fonts.gstatic.com' crossOrigin='anonymous' />
+    <meta charSet='utf-8' />
+    <meta name='viewport' content='width=device-width, initial-scale=1' />
+    <meta name='theme-color' content='#0D9488' />
+    <link rel='preconnect' href='https://fonts.googleapis.com' />
+    <link rel='preconnect' href='https://fonts.gstatic.com' crossOrigin='anonymous' />
+    <meta name='title' content='Dirag Biswas' />
+    <meta name='description' content={ description ?? DEFAULTS.description } />
+    <meta name='application-name' content='Dirag Biswas' />
+    <meta name='image' content={ image?.og.square ?? `${siteURL}/og-square.jpg` } />
 
     {/* Canonical */}
-    {/* <link rel='canonical' href={siteURL} /> */}
+    <link rel='canonical' href={siteURL} />
 
     {/* Favicons */}
-    {/* <link rel='icon' href='/favicon.ico' /> */}
+    <link rel='icon' href='/favicon.ico' />
 
     {/* Open Graph / Facebook */}
-    {/* <meta property='og:type' content='website' /> */}
-    {/* <meta property='og:url' content={siteURL} />
+    <meta property='og:type' content='website' />
+    <meta property='og:url' content={siteURL} />
     <meta property='og:type' content='article' />
-    <meta property='og:site_name' content={ title ?? 'Dirag Biswas' }>
+    <meta property='og:site_name' content={ title ?? 'Dirag Biswas' } />
     <meta property='og:title' content={ title ?? 'Dirag Biswas' } />
-    <meta property='og:description' content={ description ?? DEFAULTS.description } /> */}
-    {/* <meta property='og:image' content={ image?.og.image ?? `${siteURL}/og-image.jpg` } />
+    <meta property='og:description' content={ description ?? DEFAULTS.description } />
+    <meta property='og:image' content={ image?.og.image ?? `${siteURL}/og-image.jpg` } />
     <meta property='og:image:width' content='1200' />
     <meta property='og:image:height' content='630' />
     <meta property='og:image:alt' content={image?.alt ?? 'Dirag Biswas'} />
     <meta property='og:image' content={image?.og.square ?? `${siteURL}/og-square.jpg`} />
     <meta property='og:image:width' content='1200' />
-    <meta property='og:image:height' content='1200' /> */}
+    <meta property='og:image:height' content='1200' />
 
     {/* Twitter */}
-    {/* <meta name='twitter:title' content={ title ?? 'Dirag Biswas' } />
+    <meta name='twitter:title' content={ title ?? 'Dirag Biswas' } />
     <meta name='twitter:description' content={ description ?? DEFAULTS.description } />
     <meta name='twitter:card' content='summary_large_image' />
     <meta name='twitter:creator' content='diragb' />
     <meta name='twitter:image' content={ image?.twitterImage ?? `${siteURL}/twitter-image.jpg` } />
-    <meta name='twitter:image:alt' content={ title ?? 'Dirag Biswas' } /> */}
+    <meta name='twitter:image:alt' content={ title ?? 'Dirag Biswas' } />
 
     {/* JSON-LD Structured Data */}
     <script
@@ -94,19 +94,19 @@ const CustomHead = ({
               }
             },
             knowsAbout: [
-              'Frontend Development',
+              'Fullstack Development',
               'React',
+              'Next.js',
               'TypeScript',
               'JavaScript',
               'Web Development',
-              'Team Leadership',
               'Software Engineering',
-              'Computer Science'
             ],
             sameAs: [
               'https://github.com/diragb',
               'https://diragb.dev',
-              'https://x.com/diragb'
+              'https://x.com/diragb',
+              'https://www.linkedin.com/in/diragb',
             ],
             contactPoint: {
               '@type': 'ContactPoint',
