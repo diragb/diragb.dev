@@ -6,7 +6,7 @@ import Link from 'next/link'
 import CustomHead from '@/components/primary/CustomHead'
 import ProjectsSection from '@/components/tertiary/ProjectsSection'
 import ExperienceSection from '@/components/tertiary/ExperienceSection'
-import BlogSection from '@/components/tertiary/BlogSection'
+// import BlogSection from '@/components/tertiary/BlogSection'
 
 // Functions:
 const Home = () => {
