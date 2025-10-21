@@ -70,7 +70,7 @@ const ProjectsSection = () => {
   // Return:
   return (
     <div className='flex justify-start items-start flex-col gap-4 w-full'>
-      <span className='text-5xl leading-tight'>Projects</span>
+      <span className='text-4xl sm:text-5xl leading-tight'>Projects</span>
       {
         isSmallView ? (
           <>

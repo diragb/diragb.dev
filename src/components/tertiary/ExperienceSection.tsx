@@ -58,7 +58,7 @@ const ExperienceSection = () => {
   // Return:
   return (
     <div className='flex justify-start items-start flex-col gap-4 w-full'>
-      <span className='text-5xl leading-tight'>Experiences</span>
+      <span className='text-4xl sm:text-5xl leading-tight'>Experiences</span>
       {
         experiences.map((experience, index) => (
           <ExperienceCard key={index} {...experience} />

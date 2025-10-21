@@ -12,11 +12,11 @@ import ExperienceSection from '@/components/tertiary/ExperienceSection'
 const Home = () => {
   // Return:
   return (
-    <div className='relative flex justify-start items-start flex-col gap-12 w-screen max-w-[720px] min-h-screen mx-auto py-24 px-6 text-zinc-950 bg-zinc-50'>
+    <div className='relative flex justify-start items-start flex-col gap-10 sm:gap-12 w-screen max-w-[720px] min-h-screen mx-auto py-24 px-6 text-zinc-950 bg-zinc-50'>
       <CustomHead />
       <div className='flex justify-start items-start flex-col w-full'>
-        <span className='text-8xl leading-tight'>Dirag Biswas</span>
-        <span className='text-3xl'>Web Engineer, previously Senior Engineer at <Link href='https://www.binaryveda.com/blog/wfh-we-tried-and-we-recommend' target='_blank' className='transition-all hover:text-teal-600'>Binaryveda</Link></span>
+        <span className='text-7xl sm:text-8xl leading-tight'>Dirag Biswas</span>
+        <span className='text-2xl sm:text-3xl'>Web Engineer, previously Senior Engineer at <Link href='https://www.binaryveda.com/blog/wfh-we-tried-and-we-recommend' target='_blank' className='transition-all hover:text-teal-600'>Binaryveda</Link></span>
         <div className='flex items-center justify-center gap-3 mt-4 ml-1'>
           <Link href='https://github.com/diragb' target='_blank'>
             <div className='size-5 bg-cover bg-center bg-no-repeat' style={{ backgroundImage: 'url(https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg)' }} />

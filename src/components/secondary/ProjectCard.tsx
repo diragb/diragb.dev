@@ -79,24 +79,24 @@ const ProjectCard = ({
 
       <div className='relative flex justify-start items-start flex-col gap-1 w-full p-3 bg-white'>
         <span
-          className='text-2xl tracking-[0.05em]'
+          className='text-xl sm:text-2xl tracking-[0.05em]'
           style={{
             textShadow: '0.3px 0px 0px #18181b, -0.3px 0px 0px #18181b'
           }}
         >
           {name}
         </span>
-        <span className='text-xl tracking-[0.05em] leading-[28px] text-zinc-700'>{description}</span>
+        <span className='text-lg sm:text-xl tracking-[0.05em] leading-[28px] text-zinc-700'>{description}</span>
         <div className='flex gap-1 w-full mt-1'>
           {
             URL.live && (
-              <Link href={URL.live} target='_blank' className='py-0.5 px-2 bg-cyan-200 text-sm leading-[14px] text-zinc-950 border-[1px] border-cyan-400 rounded-full transition-all hover:brightness-110'>Live</Link>
+              <Link href={URL.live} target='_blank' className='py-[1px] sm:py-0.5 px-1.5 sm:px-2 bg-cyan-200 text-xs sm:text-sm leading-[14px] text-zinc-950 border-[1px] border-cyan-400 rounded-full transition-all hover:brightness-110'>Live</Link>
             )
           }
-          <Link href={URL.github} target='_blank' className='py-0.5 px-2 bg-teal-200 text-sm leading-[14px] text-zinc-950 border-[1px] border-teal-400 rounded-full transition-all hover:brightness-110'>GitHub</Link>
+          <Link href={URL.github} target='_blank' className='py-[1px] sm:py-0.5 px-1.5 sm:px-2 bg-teal-200 text-xs sm:text-sm leading-[14px] text-zinc-950 border-[1px] border-teal-400 rounded-full transition-all hover:brightness-110'>GitHub</Link>
           {
             technologies.map((technology, index) => (
-              <div className='py-0.5 px-2 bg-zinc-100 text-sm leading-[14px] text-zinc-950 border-[1px] border-zinc-200 rounded-full' key={index}>{technology}</div>
+              <div className='py-[1px] sm:py-0.5 px-1.5 sm:px-2 bg-zinc-100 text-xs sm:text-sm leading-[14px] text-zinc-950 border-[1px] border-zinc-200 rounded-full' key={index}>{technology}</div>
             ))
           }
         </div>
