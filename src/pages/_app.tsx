@@ -1,17 +1,23 @@
 // Typescript:
 import type { AppProps } from 'next/app'
+import { Instrument_Serif } from 'next/font/google'
+import { cn } from '@/lib/utils'
 
 // Styles:
 import '@/styles/globals.css'
 
+// Constants:
+const instrumentSerif = Instrument_Serif({
+  subsets: ['latin'],
+  weight: ['400'],
+})
+
 // Components:
 import { Toaster } from '@/components/ui/toaster'
-import Navbar from '@/components/secondary/Navbar'
 
 // Functions:
 const App = ({ Component, pageProps }: AppProps) => (
-  <main className='text-slate-700 bg-gray-100'>
-    <Navbar />
+  <main className={cn('text-slate-700 bg-zinc-50', instrumentSerif.className)}>
     <Component {...pageProps} />
     <Toaster />
   </main>

@@ -1,6 +1,12 @@
 // Packages:
 import React from 'react'
 
+// Constants:
+const siteURL = 'https://diragb.dev'
+const DEFAULTS = {
+  description: 'hi, i\'m dirag. senior frontend engineer, cse undergrad @ ipu \'25. learn more about me.',
+}
+
 // Components:
 import Head from 'next/head'
 
@@ -13,32 +19,119 @@ const CustomHead = ({
   title?: string
   description?: string
   image?: {
-    square: string
-    rectangle: string
+    og: {
+      image: string
+      square: string
+    }
+    twitterImage: string
+    alt: string
   }
 }) => (
   <Head>
-    <meta charSet='utf-8' />
-    <meta name='viewport' content='width=device-width, initial-scale=1' />
-    <meta name='theme-color' content='#E11D48' />
-    <link rel='preconnect' href='https://fonts.googleapis.com' />
-    <link rel='preconnect' href='https://fonts.gstatic.com' crossOrigin='anonymous' />
-    <meta name='description' content={ description ?? 'hi, i\'m dirag. senior frontend engineer at binaryveda, cse undergrad @ ipu. learn more about me.' } />
-    <meta name='image' content={ image?.square ?? 'https://diragb.dev/square-cover.png' } />
-    <meta property='og:url' content='https://diragb.dev' />
+    {/* Primary Meta Tags */}
+    {/* <title>{ title ?? 'Dirag Biswas' }</title> */}
+    {/* <link rel='preconnect' href='https://fonts.googleapis.com' />
+    <link rel='preconnect' href='https://fonts.gstatic.com' crossOrigin='anonymous' /> */}
+    {/* <meta charSet='utf-8' /> */}
+    {/* <meta name='viewport' content='width=device-width, initial-scale=1' /> */}
+    {/* <meta name='theme-color' content='#E11D48' /> */}
+    {/* <link rel='preconnect' href='https://fonts.googleapis.com' />
+    <link rel='preconnect' href='https://fonts.gstatic.com' crossOrigin='anonymous' /> */}
+    {/* <meta name='title' content='Dirag Biswas' /> */}
+    {/* <meta name='description' content={ description ?? DEFAULTS.description } /> */}
+    {/* <meta name='application-name' content='Dirag Biswas' /> */}
+    {/* <meta name='image' content={ image?.square ?? `${siteURL}/og-square.jpg` } /> */}
+
+    {/* Canonical */}
+    {/* <link rel='canonical' href={siteURL} /> */}
+
+    {/* Favicons */}
+    {/* <link rel='icon' href='/favicon.ico' /> */}
+
+    {/* Open Graph / Facebook */}
+    {/* <meta property='og:type' content='website' /> */}
+    {/* <meta property='og:url' content={siteURL} />
     <meta property='og:type' content='article' />
+    <meta property='og:site_name' content={ title ?? 'Dirag Biswas' }>
     <meta property='og:title' content={ title ?? 'Dirag Biswas' } />
-    <meta property='og:description' content={ description ?? 'hi, i\'m dirag. senior frontend engineer at binaryveda, cse undergrad @ ipu. learn more about me.' } />
-    <meta property='og:image' content={ image?.square ?? 'https://diragb.dev/square-cover.png' } />
+    <meta property='og:description' content={ description ?? DEFAULTS.description } /> */}
+    {/* <meta property='og:image' content={ image?.og.image ?? `${siteURL}/og-image.jpg` } />
+    <meta property='og:image:width' content='1200' />
+    <meta property='og:image:height' content='630' />
+    <meta property='og:image:alt' content={image?.alt ?? 'Dirag Biswas'} />
+    <meta property='og:image' content={image?.og.square ?? `${siteURL}/og-square.jpg`} />
+    <meta property='og:image:width' content='1200' />
+    <meta property='og:image:height' content='1200' /> */}
+
+    {/* Twitter */}
+    {/* <meta name='twitter:title' content={ title ?? 'Dirag Biswas' } />
+    <meta name='twitter:description' content={ description ?? DEFAULTS.description } />
     <meta name='twitter:card' content='summary_large_image' />
     <meta name='twitter:creator' content='diragb' />
-    <meta name='twitter:title' content={ title ?? 'Dirag Biswas' } />
-    <meta name='twitter:description' content={ description ?? 'hi, i\'m dirag. senior frontend engineer at binaryveda, cse undergrad @ ipu. learn more about me.' } />
-    <meta name='twitter:image' content={ image?.rectangle ?? 'https://diragb.dev/rect-cover.png' } />
-    <meta name='twitter:image:alt' content={ title ?? 'Dirag Biswas' } />
-    <link rel='preconnect' href='https://fonts.googleapis.com' />
-    <link rel='preconnect' href='https://fonts.gstatic.com' crossOrigin='anonymous' />
-    <title>{ title ?? 'Dirag Biswas' }</title>
+    <meta name='twitter:image' content={ image?.twitterImage ?? `${siteURL}/twitter-image.jpg` } />
+    <meta name='twitter:image:alt' content={ title ?? 'Dirag Biswas' } /> */}
+
+    {/* JSON-LD Structured Data */}
+    <script
+      type='application/ld+json'
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify([
+          {
+            '@context': 'https://schema.org',
+            '@type': 'Person',
+            name: 'Dirag Biswas',
+            alternateName: 'diragb',
+            url: siteURL,
+            jobTitle: 'Senior Frontend Engineer',
+            description: description ?? DEFAULTS.description,
+            alumniOf: {
+              '@type': 'EducationalOrganization',
+              name: 'Guru Gobind Singh Indraprastha University (IPU)',
+              address: {
+                '@type': 'PostalAddress',
+                addressLocality: 'New Delhi',
+                addressCountry: 'India'
+              }
+            },
+            knowsAbout: [
+              'Frontend Development',
+              'React',
+              'TypeScript',
+              'JavaScript',
+              'Web Development',
+              'Team Leadership',
+              'Software Engineering',
+              'Computer Science'
+            ],
+            sameAs: [
+              'https://github.com/diragb',
+              'https://diragb.dev',
+              'https://x.com/diragb'
+            ],
+            contactPoint: {
+              '@type': 'ContactPoint',
+              contactType: 'professional',
+              url: siteURL
+            }
+          },
+          {
+            '@context': 'https://schema.org',
+            '@type': 'WebSite',
+            name: 'Dirag Biswas',
+            url: siteURL,
+            description: description ?? DEFAULTS.description,
+            author: {
+              '@type': 'Person',
+              name: 'Dirag Biswas',
+              url: 'https://github.com/diragb'
+            },
+            inLanguage: 'en-US',
+            isAccessibleForFree: true,
+            license: 'https://creativecommons.org/licenses/by/4.0/'
+          }
+        ]),
+      }}
+    />
   </Head>
 )
 
