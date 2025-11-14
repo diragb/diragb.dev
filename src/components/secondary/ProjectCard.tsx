@@ -37,7 +37,7 @@ const ProjectCard = ({
   // Return:
   return (
     <div
-      className='flex flex-col w-full border-[1px] border-zinc-200 rounded-md overflow-hidden'
+      className='flex flex-col w-full border-[1px] border-zinc-200 rounded-md overflow-hidden cursor-pointer'
       onMouseEnter={() => {
         if (!videoURI) return
         setShouldPlayVideo(true)
@@ -51,6 +51,19 @@ const ProjectCard = ({
           videoRef.current.pause()
           videoRef.current.currentTime = 0
         }
+      }}
+      onClick={e => {
+        if (
+          e.defaultPrevented ||
+          e.button !== 0 ||
+          e.metaKey ||
+          e.ctrlKey ||
+          e.altKey ||
+          e.shiftKey
+        ) return
+
+        if ((e.target as HTMLElement)?.closest('a')) return
+        window.open(URL.live ?? URL.github, '_blank')
       }}
     >
       <div className='relative w-full h-48 bg-zinc-200 rounded-t-[7px]'>
