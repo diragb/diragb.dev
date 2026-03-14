@@ -1,5 +1,5 @@
 // Packages:
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import fs from 'fs'
 import path from 'path'
@@ -12,6 +12,7 @@ import type { Components } from 'react-markdown'
 
 // Components:
 import Link from 'next/link'
+import Script from 'next/script'
 import Markdown from 'react-markdown'
 import CustomHead from '@/components/primary/CustomHead'
 import Navbar from '@/components/primary/Navbar'
@@ -82,6 +83,7 @@ const markdownComponents: Components = {
     }
     return <blockquote className='pl-4 border-l-[3px] border-teal-400 text-zinc-600 italic'>{children}</blockquote>
   },
+  script: () => null,
   hr: () => (
     <hr className='border-t-[1px] border-zinc-200 my-2' />
   ),
@@ -113,6 +115,14 @@ export const getStaticProps: GetStaticProps<{ blog: BlogPost }> = (context) => {
 const BlogPostPage = ({ blog }: { blog: BlogPost }) => {
   // Constants:
   const router = useRouter()
+
+  // Effects:
+  useEffect(() => {
+    const twttr = (window as any).twttr
+    if (twttr?.widgets) {
+      twttr.widgets.load()
+    }
+  }, [blog.content])
 
   // Return:
   if (router.isFallback) return <div>Loading...</div>
@@ -164,6 +174,14 @@ const BlogPostPage = ({ blog }: { blog: BlogPost }) => {
           ← All posts
         </Link>
       </div>
+      <Script
+        id='twitter-widgets'
+        src='https://platform.twitter.com/widgets.js'
+        strategy='afterInteractive'
+        onLoad={() => {
+          (window as any).twttr?.widgets?.load()
+        }}
+      />
     </div>
   )
 }
