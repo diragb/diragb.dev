@@ -2,7 +2,6 @@
 import React, { useMemo } from 'react'
 
 // Components:
-import Link from 'next/link'
 import ExperienceCard, { type Experience } from '@/components/secondary/ExperienceCard'
 
 // Functions:
@@ -18,16 +17,8 @@ const ExperienceSection = () => {
       },
       position: 'Senior Frontend Engineer',
       duration: ['May ‘23', 'Sep ‘25'],
-      description: (
-        <>
-          Delivered more than ten projects for clients like{' '}
-          <Link className='italic transition-all hover:text-teal-600' href='https://www.godrejenterprises.com/locks-and-security'>Godrej</Link>,{' '}
-          <Link className='italic transition-all hover:text-teal-600' href='https://www.dtdc.com/in/'>DTDC</Link>,{' '}
-          <Link className='italic transition-all hover:text-teal-600' href='https://www.keus.in/'>Keus</Link>,{' '}
-          managed a team of 5 engineers, and collaborated with cross-functional teams.
-        </>
-      ),
-      technologies: ['Next.js', 'Svelte', 'Typescript', 'TailwindCSS'],
+      description: 'Senior engineer with leadership experience, delivering 10+ client projects by building complex systems including IoT network management (ESP32, BLE), custom email tooling, and interactive dashboards (D3, Next.js, Tailwind), while managing a team of 5 and leveraging AI to streamline development workflows.',
+      technologies: ['Next.js', 'Svelte', 'Typescript'],
     },
     {
       company: {
@@ -36,10 +27,10 @@ const ExperienceSection = () => {
         initials: 'HB',
         URL: 'https://www.heybase.com',
       },
-      position: 'Fullstack Engineer (Frontend Heavy)',
+      position: 'Fullstack Engineer',
       duration: ['Jan ‘23', 'May ‘23'],
-      description: 'Independently migrated the codebase from Javascript to Typescript, and shipped some key features.',
-      technologies: ['Next.js', 'Express.js', 'MongoDB', 'Typescript', 'TailwindCSS'],
+      description: 'Built a collaborative WYSIWYG editor with CRDT-based real-time sync and custom Quill.js templating, independently migrated a monorepo to TypeScript, and improved app performance through code-splitting, query optimization, and resolving technical debt.',
+      technologies: ['Next.js', 'Express.js', 'MongoDB', 'Typescript'],
     },
     {
       company: {
@@ -51,14 +42,14 @@ const ExperienceSection = () => {
       position: 'Software Engineer',
       duration: ['Jan ‘22', 'Dec ‘22'],
       description: 'Built data visualization tools with React, leveraged Python for data analysis.',
-      technologies: ['React.js', 'Styled Components', 'd3', 'Typescript', 'Python', 'pandas', 'numpy'],
+      technologies: ['React.js', 'd3', 'Typescript', 'Python'],
     },
   ], [])
 
   // Return:
   return (
     <div className='flex justify-start items-start flex-col gap-4 w-full'>
-      <span className='text-4xl sm:text-5xl leading-tight'>Experiences</span>
+      <span className='text-4xl sm:text-5xl leading-tight'>Work Experience</span>
       {
         experiences.map((experience, index) => (
           <ExperienceCard key={index} {...experience} />

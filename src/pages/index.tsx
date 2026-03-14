@@ -4,9 +4,10 @@ import React from 'react'
 // Components:
 import Link from 'next/link'
 import CustomHead from '@/components/primary/CustomHead'
+import Navbar from '@/components/primary/Navbar'
 import ProjectsSection from '@/components/tertiary/ProjectsSection'
 import ExperienceSection from '@/components/tertiary/ExperienceSection'
-// import BlogSection from '@/components/tertiary/BlogSection'
+import BlogSection from '@/components/tertiary/BlogSection'
 
 // Functions:
 const Home = () => {
@@ -14,9 +15,10 @@ const Home = () => {
   return (
     <div className='relative flex justify-start items-start flex-col gap-10 sm:gap-12 w-screen max-w-[720px] min-h-screen mx-auto py-24 px-6 text-zinc-950 bg-zinc-50'>
       <CustomHead />
+      <Navbar />
       <div className='flex justify-start items-start flex-col w-full'>
-        <h1 className='text-7xl sm:text-8xl leading-tight'>Dirag Biswas</h1>
-        <h2 className='text-2xl sm:text-3xl'>Web Engineer, previously Senior Engineer at <Link href='https://www.binaryveda.com/blog/wfh-we-tried-and-we-recommend' target='_blank' className='transition-all hover:text-teal-600'>Binaryveda</Link></h2>
+        <h1 className='text-7xl sm:text-8xl leading-tight text-shadow-lg'>Dirag Biswas</h1>
+        <h2 className='sm:mt-2 mt-0 text-2xl sm:text-3xl font-inter tracking-[-0.075em] text-zinc-700'>Product Engineer, previously Senior Engineer at <Link href='https://www.binaryveda.com/blog/wfh-we-tried-and-we-recommend' target='_blank' className='transition-all hover:text-teal-600'>Binaryveda</Link></h2>
         <div className='flex items-center justify-center gap-3 mt-4 ml-1'>
           <Link title='GitHub Profile' href='https://github.com/diragb' target='_blank'>
             <div className='size-5 bg-cover bg-center bg-no-repeat' style={{ backgroundImage: 'url(https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg)' }} />
@@ -31,7 +33,7 @@ const Home = () => {
       </div>
       <ExperienceSection />
       <ProjectsSection />
-      {/* <BlogSection /> */}
+      <BlogSection />
     </div>
   )
 }
