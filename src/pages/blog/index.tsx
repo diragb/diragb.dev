@@ -7,7 +7,7 @@ import Navbar from '@/components/primary/Navbar'
 import BlogCard from '@/components/secondary/BlogCard'
 
 // Constants:
-import { blogs } from '@/utils/blogs'
+import { publishedBlogs } from '@/utils/blogs'
 
 // Functions:
 const BlogPage = () => {
@@ -27,7 +27,7 @@ const BlogPage = () => {
       </div>
       <div className='flex justify-start items-start flex-col gap-4 w-full'>
         {
-          blogs.map((blog, index) => (
+          publishedBlogs.map((blog, index) => (
             <BlogCard key={index} {...blog} />
           ))
         }

@@ -6,12 +6,12 @@ import Link from 'next/link'
 import BlogCard from '@/components/secondary/BlogCard'
 
 // Constants:
-import { blogs } from '@/utils/blogs'
+import { publishedBlogs } from '@/utils/blogs'
 
 // Functions:
 const BlogSection = () => {
   // Memo:
-  const recentBlogs = useMemo(() => blogs.slice(0, 3), [])
+  const recentBlogs = useMemo(() => publishedBlogs.slice(0, 3), [])
 
   // Return:
   return (
@@ -23,7 +23,7 @@ const BlogSection = () => {
         ))
       }
       {
-        blogs.length > 3 && (
+        publishedBlogs.length > 3 && (
           <Link
             href='/blog'
             className='self-end text-base font-inter tracking-[-0.075em] text-zinc-500 transition-all hover:text-teal-600'

@@ -3,7 +3,12 @@ import React, { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import fs from 'fs'
 import path from 'path'
+import remarkMath from 'remark-math'
 import rehypeRaw from 'rehype-raw'
+import rehypeKatex from 'rehype-katex'
+import remarkGfm from 'remark-gfm'
+import 'katex/dist/katex.min.css'
+import rehypeUnwrapBlocks from '@/utils/rehype-unwrap-blocks'
 
 // Typescript:
 import type { GetStaticPaths, GetStaticProps } from 'next'
@@ -19,8 +24,10 @@ import Navbar from '@/components/primary/Navbar'
 
 // Constants:
 import { blogs } from '@/utils/blogs'
+import widgets from '@/components/widgets'
 
 const markdownComponents: Components = {
+  ...widgets,
   h1: ({ children }) => (
     <h1 className='text-5xl sm:text-6xl font-instrument-serif text-zinc-950 mt-6'>{children}</h1>
   ),
@@ -62,7 +69,7 @@ const markdownComponents: Components = {
   a: ({ href, children }) => (
     <Link
       href={href ?? '#'}
-      target='_blank'
+      target={href?.[0] === '#' ? undefined : '_blank'}
       className='text-teal-600 font-bold transition-colors hover:text-teal-700 hover:underline hover:underline-offset-2 decoration-wavy'
     >
       {children}
@@ -83,6 +90,33 @@ const markdownComponents: Components = {
     }
     return <blockquote className='pl-4 border-l-[3px] border-teal-400 text-zinc-600 italic'>{children}</blockquote>
   },
+  table: ({ children }) => (
+    <div className='w-full overflow-x-auto'>
+      <table className='w-full border-collapse text-base'>
+        {children}
+      </table>
+    </div>
+  ),
+  thead: ({ children }) => (
+    <thead className='bg-zinc-100 text-left text-zinc-950'>
+      {children}
+    </thead>
+  ),
+  th: ({ children }) => (
+    <th className='px-4 py-2 bg-teal-900 text-white border border-zinc-200 font-semibold text-sm tracking-wide'>
+      {children}
+    </th>
+  ),
+  td: ({ children }) => (
+    <td className='px-4 py-2 border border-zinc-200 text-zinc-700'>
+      {children}
+    </td>
+  ),
+  tr: ({ children }) => (
+    <tr className='even:bg-teal-50 odd:bg-white'>
+      {children}
+    </tr>
+  ),
   script: () => null,
   hr: () => (
     <hr className='border-t-[1px] border-zinc-200 my-2' />
@@ -133,6 +167,14 @@ const BlogPostPage = ({ blog }: { blog: BlogPost }) => {
         description={blog.excerpt}
       />
       <Navbar />
+      {blog.workInProgress && (
+        <div className='flex items-center gap-2.5 w-full px-4 py-3 bg-amber-50 border border-amber-200 rounded-lg text-amber-800 font-inter tracking-[-0.025em]'>
+          <span className='text-lg leading-none'>🚧</span>
+          <p className='text-sm'>
+            <span className='font-semibold'>Work in progress</span> — This article is still being written. Content may change or be incomplete.
+          </p>
+        </div>
+      )}
       <article className='flex flex-col gap-6 w-full'>
         <header className='flex flex-col gap-3 w-full'>
           <Link
@@ -161,7 +203,11 @@ const BlogPostPage = ({ blog }: { blog: BlogPost }) => {
           </div>
         </header>
         <div className='flex flex-col gap-5 w-full font-inter tracking-[-0.025em]'>
-          <Markdown components={markdownComponents} rehypePlugins={[rehypeRaw]}>
+          <Markdown
+            components={markdownComponents}
+            remarkPlugins={[remarkMath, remarkGfm]}
+            rehypePlugins={[rehypeRaw, rehypeUnwrapBlocks, rehypeKatex]}
+          >
             {blog.content}
           </Markdown>
         </div>

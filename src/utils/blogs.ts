@@ -6,6 +6,7 @@ export interface BlogMeta {
   date: string
   readTime: string
   tags: string[]
+  workInProgress?: boolean
 }
 
 export interface BlogPost extends BlogMeta {
@@ -22,4 +23,15 @@ export const blogs: BlogMeta[] = [
     readTime: '3 min read',
     tags: ['Philosophy', 'Creativity', 'Culture'],
   },
+  {
+    id: 'optimizing-sleep',
+    title: 'Optimizing Sleep',
+    excerpt: 'My experiences with optimizing sleep. ETC.',
+    date: 'Mar 15, 2026',
+    readTime: 'X min read',
+    tags: ['Health', 'Science', 'Habits'],
+    workInProgress: true,
+  },
 ]
+
+export const publishedBlogs = blogs.filter(blog => !blog.workInProgress)
