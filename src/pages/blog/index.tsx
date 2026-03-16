@@ -5,9 +5,10 @@ import React from 'react'
 import CustomHead from '@/components/primary/CustomHead'
 import Navbar from '@/components/primary/Navbar'
 import BlogCard from '@/components/secondary/BlogCard'
+import NewsletterCallout from '@/components/secondary/NewsletterCallout'
 
 // Constants:
-import { publishedBlogs } from '@/utils/blogs'
+import { publishedBlogs } from '@/lib/blogs'
 
 // Functions:
 const BlogPage = () => {
@@ -19,11 +20,14 @@ const BlogPage = () => {
         description='Thoughts on engineering, open source, and building software.'
       />
       <Navbar />
-      <div className='flex justify-start items-start flex-col gap-4 w-full'>
-        <h1 className='text-7xl sm:text-8xl leading-tight'>Blog</h1>
-        <p className='text-xl sm:text-2xl font-inter tracking-[-0.075em] text-zinc-700'>
-          Thoughts on engineering, open source, and building software.
-        </p>
+      <div className='flex flex-col gap-4 w-full'>
+        <div className='flex justify-start items-start flex-col gap-4 w-full'>
+          <h1 className='text-7xl sm:text-8xl leading-tight'>Blog</h1>
+          <p className='text-xl sm:text-2xl font-inter tracking-[-0.075em] text-zinc-700'>
+            Thoughts on engineering, open source, and building software.
+          </p>
+        </div>
+        <NewsletterCallout />
       </div>
       <div className='flex justify-start items-start flex-col gap-4 w-full'>
         {

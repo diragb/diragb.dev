@@ -6,7 +6,7 @@ import Link from 'next/link'
 import BlogCard from '@/components/secondary/BlogCard'
 
 // Constants:
-import { publishedBlogs } from '@/utils/blogs'
+import { publishedBlogs } from '@/lib/blogs'
 
 // Functions:
 const BlogSection = () => {

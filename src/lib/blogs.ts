@@ -26,11 +26,10 @@ export const blogs: BlogMeta[] = [
   {
     id: 'optimizing-sleep',
     title: 'Optimizing Sleep',
-    excerpt: 'My experiences with optimizing sleep. ETC.',
+    excerpt: 'A decade of sleep experiments, distilled into equations, heuristics, and hard-won habits.',
     date: 'Mar 15, 2026',
-    readTime: 'X min read',
+    readTime: '12 min read',
     tags: ['Health', 'Science', 'Habits'],
-    workInProgress: true,
   },
 ]
 

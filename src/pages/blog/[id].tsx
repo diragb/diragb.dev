@@ -8,11 +8,11 @@ import rehypeRaw from 'rehype-raw'
 import rehypeKatex from 'rehype-katex'
 import remarkGfm from 'remark-gfm'
 import 'katex/dist/katex.min.css'
-import rehypeUnwrapBlocks from '@/utils/rehype-unwrap-blocks'
+import rehypeUnwrapBlocks from '@/lib/rehype-unwrap-blocks'
 
 // Typescript:
 import type { GetStaticPaths, GetStaticProps } from 'next'
-import type { BlogPost } from '@/utils/blogs'
+import type { BlogPost } from '@/lib/blogs'
 import type { Components } from 'react-markdown'
 
 // Components:
@@ -21,9 +21,10 @@ import Script from 'next/script'
 import Markdown from 'react-markdown'
 import CustomHead from '@/components/primary/CustomHead'
 import Navbar from '@/components/primary/Navbar'
+import NewsletterDialog from '@/components/secondary/NewsletterDialog'
 
 // Constants:
-import { blogs } from '@/utils/blogs'
+import { blogs } from '@/lib/blogs'
 import widgets from '@/components/widgets'
 
 const markdownComponents: Components = {
@@ -36,6 +37,9 @@ const markdownComponents: Components = {
   ),
   h3: ({ children }) => (
     <h3 className='text-2xl sm:text-3xl font-instrument-serif text-zinc-950 mt-3'>{children}</h3>
+  ),
+  h4: ({ children }) => (
+    <h4 className='text-xl sm:text-2xl font-instrument-serif text-zinc-800 mt-1'>{children}</h4>
   ),
   p: ({ children }) => (
     <p className='text-lg leading-relaxed text-zinc-800'>{children}</p>
@@ -212,6 +216,7 @@ const BlogPostPage = ({ blog }: { blog: BlogPost }) => {
           </Markdown>
         </div>
       </article>
+      <NewsletterDialog />
       <div className='flex items-center justify-between w-full pt-6 border-t-[1px] border-zinc-200'>
         <Link
           href='/blog'

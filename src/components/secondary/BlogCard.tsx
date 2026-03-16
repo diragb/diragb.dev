@@ -2,7 +2,7 @@
 import React from 'react'
 
 // Typescript:
-import type { BlogMeta } from '@/utils/blogs'
+import type { BlogMeta } from '@/lib/blogs'
 
 // Components:
 import Link from 'next/link'

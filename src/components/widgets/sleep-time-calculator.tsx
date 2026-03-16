@@ -1,5 +1,5 @@
 // Packages:
-import React, { useMemo, useState } from 'react'
+import React, { useEffect, useMemo, useRef, useState } from 'react'
 
 // Typescript:
 interface AgeGroup {
@@ -28,6 +28,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
+import { Button } from '../ui/button'
 
 // Constants:
 const AGE_GROUPS: AgeGroup[] = [
@@ -107,6 +108,172 @@ const getSleepUnits = ({
   return units
 }
 
+const getCalendarDates = (startMinutes: number, endMinutes: number) => {
+  const now = new Date()
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate())
+
+  const normStart = ((startMinutes % 1440) + 1440) % 1440
+  const normEnd = ((endMinutes % 1440) + 1440) % 1440
+
+  const startDate = new Date(today.getTime() + normStart * 60_000)
+  if (startDate.getTime() < now.getTime()) {
+    startDate.setDate(startDate.getDate() + 1)
+  }
+
+  const endDate = new Date(startDate)
+  if (normEnd <= normStart) endDate.setDate(endDate.getDate() + 1)
+  endDate.setHours(Math.floor(normEnd / 60), normEnd % 60, 0, 0)
+
+  return { startDate, endDate }
+}
+
+const fmtCalDate = (d: Date) => {
+  const p = (n: number) => n.toString().padStart(2, '0')
+  return `${d.getFullYear()}${p(d.getMonth() + 1)}${p(d.getDate())}T${p(d.getHours())}${p(d.getMinutes())}00`
+}
+
+const fmtIsoLocal = (d: Date) => {
+  const p = (n: number) => n.toString().padStart(2, '0')
+  return `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())}T${p(d.getHours())}:${p(d.getMinutes())}:00`
+}
+
+const googleCalendarUrl = (title: string, desc: string, start: Date, end: Date) => {
+  const params = new URLSearchParams({
+    action: 'TEMPLATE',
+    text: title,
+    dates: `${fmtCalDate(start)}/${fmtCalDate(end)}`,
+    details: [
+      desc,
+      `<b>Make a new schedule here</b>: <a href='https://diragb.dev/blog/optimizing-sleep/#sleep-time-calculator' target='_blank'>https://diragb.dev/blog/optimizing-sleep/#sleep-time-calculator</a>`,
+    ].join('\n'),
+    recur: 'RRULE:FREQ=DAILY',
+  })
+  return `https://calendar.google.com/calendar/render?${params.toString()}`
+}
+
+const outlookCalendarUrl = (title: string, desc: string, start: Date, end: Date) => {
+  const params = new URLSearchParams({
+    subject: title,
+    startdt: fmtIsoLocal(start),
+    enddt: fmtIsoLocal(end),
+    body: [
+      desc,
+      `Make a new schedule here: https://diragb.dev/blog/optimizing-sleep/#sleep-time-calculator`,
+    ].join('\n'),
+    path: '/calendar/action/compose',
+    rru: 'addevent',
+  })
+  return `https://outlook.live.com/calendar/0/deeplink/compose?${params.toString()}`
+}
+
+const buildIcsContent = (title: string, desc: string, start: Date, end: Date) =>
+  [
+    'BEGIN:VCALENDAR',
+    'VERSION:2.0',
+    'PRODID:-//Sleep Calculator//EN',
+    'BEGIN:VEVENT',
+    `DTSTART:${fmtCalDate(start)}`,
+    `DTEND:${fmtCalDate(end)}`,
+    `SUMMARY:${title}`,
+    `DESCRIPTION:${[
+      desc,
+      `Make a new schedule here: https://diragb.dev/blog/optimizing-sleep/#sleep-time-calculator`,
+    ].join('\n').replace(/\n/g, '\\n')}`,
+    'RRULE:FREQ=DAILY',
+    'STATUS:CONFIRMED',
+    'BEGIN:VALARM',
+    'TRIGGER:-PT15M',
+    'ACTION:DISPLAY',
+    'DESCRIPTION:Time to get ready for bed',
+    'END:VALARM',
+    'END:VEVENT',
+    'END:VCALENDAR',
+  ].join('\r\n')
+
+const downloadIcs = (content: string) => {
+  const blob = new Blob([content], { type: 'text/calendar;charset=utf-8' })
+  const url = URL.createObjectURL(blob)
+  const a = document.createElement('a')
+  a.href = url
+  a.download = 'sleep.ics'
+  a.click()
+  URL.revokeObjectURL(url)
+}
+
+const CalendarDropdown = ({
+  startMinutes,
+  endMinutes,
+  label,
+  cycles,
+  durationMinutes,
+  units,
+  targetUnits,
+  chronotypeLabel,
+}: {
+  startMinutes: number
+  endMinutes: number
+  label: string
+  cycles: number
+  durationMinutes: number
+  units: number
+  targetUnits: number
+  chronotypeLabel: string
+}) => {
+  const [open, setOpen] = useState(false)
+  const ref = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (!open) return
+    const handler = (e: MouseEvent) => {
+      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false)
+    }
+    document.addEventListener('mousedown', handler)
+    return () => document.removeEventListener('mousedown', handler)
+  }, [open])
+
+  const hours = Math.floor(durationMinutes / 60)
+  const mins = durationMinutes % 60
+  const desc = [
+    `${label}: ${cycles} sleep cycle${cycles > 1 ? 's' : ''} (${hours}h ${mins}m)`,
+    `Sleep quality: ${units.toFixed(1)} units (target: ${targetUnits})`,
+    `Chronotype: ${chronotypeLabel}`,
+    ``,
+  ].join('\n')
+
+  const { startDate, endDate } = getCalendarDates(startMinutes, endMinutes)
+
+  const items: { label: string; action: () => void }[] = [
+    { label: 'Google Calendar', action: () => window.open(googleCalendarUrl('💤 - Sleep', desc, startDate, endDate), '_blank') },
+    { label: 'Outlook', action: () => window.open(outlookCalendarUrl('💤 - Sleep', desc, startDate, endDate), '_blank') },
+    { label: 'Download .ics', action: () => downloadIcs(buildIcsContent('💤 - Sleep', desc, startDate, endDate)) },
+  ]
+
+  return (
+    <div className='relative' ref={ref}>
+      <Button
+        variant='default'
+        onClick={() => setOpen(o => !o)}
+        className='w-full mt-1'
+      >
+        Add to Calendar
+      </Button>
+      {open && (
+        <div className='absolute bottom-full mb-1 left-0 bg-white rounded-lg shadow-lg border border-zinc-200 py-1 z-10 min-w-[168px]'>
+          {items.map(item => (
+            <button
+              key={item.label}
+              onClick={() => { item.action(); setOpen(false) }}
+              className='w-full text-left px-3 py-1.5 text-sm text-zinc-700 hover:bg-zinc-50 transition-colors'
+            >
+              {item.label}
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+  )
+}
+
 const SleepTimeCalculator = () => {
   // State:
   const [ageGroupIndex, setAgeGroupIndex] = useState(1)
@@ -118,13 +285,15 @@ const SleepTimeCalculator = () => {
   const ageGroup = AGE_GROUPS[ageGroupIndex]
   const chronotype = CHRONOTYPES[chronotypeIndex]
   const referenceMinutes = toMinutes(hour, minute, meridiem)
-  const tiers = [
+  
+
+  // Memo:
+  const tiers = useMemo(() => [
     { id: 'best', label: 'Best for you', cycles: ageGroup.cycles.best, highlight: true },
     { id: 'work', label: 'Will work', cycles: ageGroup.cycles.work, highlight: false },
     { id: 'bare', label: 'Bare minimum', cycles: ageGroup.cycles.bare, highlight: false },
-  ] as const
-
-  // Memo:
+  ] as const, [ageGroup.cycles.best, ageGroup.cycles.work, ageGroup.cycles.bare])
+  
   const results = useMemo(
     () =>
       tiers.map(tier => {
@@ -158,7 +327,7 @@ const SleepTimeCalculator = () => {
 
   // Return:
   return (
-    <div className='flex flex-col gap-4 w-full'>
+    <div id='sleep-time-calculator' className='flex flex-col gap-4 w-full'>
       <div className='flex flex-col gap-1'>
         <label className='text-sm font-medium text-zinc-500'>Age group</label>
         <div className='flex gap-2 flex-wrap mt-1'>
@@ -304,7 +473,7 @@ const SleepTimeCalculator = () => {
         {results.map(result => (
           <div
             key={result.id}
-            className={`rounded-xl border p-3 flex flex-col gap-1 ${
+            className={`flex flex-col gap-1 p-3 rounded-xl border ${
               result.highlight
                 ? 'bg-teal-50/70 border-teal-200'
                 : 'bg-white border-zinc-200'
@@ -318,6 +487,16 @@ const SleepTimeCalculator = () => {
             <span className='text-sm text-zinc-500'>
               {result.cycles} cycle{result.cycles > 1 ? 's' : ''}
             </span>
+            <CalendarDropdown
+              startMinutes={mode === 'wake-up-time' ? referenceMinutes : referenceMinutes - result.durationMinutes}
+              endMinutes={mode === 'wake-up-time' ? referenceMinutes + result.durationMinutes : referenceMinutes}
+              label={result.label}
+              cycles={result.cycles}
+              durationMinutes={result.durationMinutes}
+              units={result.units}
+              targetUnits={ageGroup.targetUnits}
+              chronotypeLabel={chronotype.label}
+            />
           </div>
         ))}
       </div>
