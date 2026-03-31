@@ -17,9 +17,9 @@ const Navbar = () => {
           <Link href='/blog' className='text-lg text-zinc-950 transition-colors hover:text-teal-600'>
             Blog
           </Link>
-          {/* TODO: <Link href='/resume' className='text-lg text-zinc-950 transition-colors hover:text-teal-600'>
+          <Link target='_blank' referrerPolicy='no-referrer' href='https://docs.google.com/document/d/1D-ZdGlDxXKwvAsXDAdPpJDpw0zL5Jo8V/edit?usp=sharing&ouid=101760868985617262773&rtpof=true&sd=true' className='text-lg text-zinc-950 transition-colors hover:text-teal-600'>
             Resume
-          </Link> */}
+          </Link>
         </div>
       </div>
     </nav>
